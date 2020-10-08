@@ -1,6 +1,6 @@
 export default function manageUser(state = {
     username: '',
-    userId: null,
+    id: null,
     firstName: '',
     lastName: ''
 }, action) {

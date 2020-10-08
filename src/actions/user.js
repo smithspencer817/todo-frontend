@@ -3,7 +3,7 @@ export const addCurrentUser = user => {
         type: 'ADD_CURRENT_USER',
         user: {
             username: user.username,
-            userId: user.id,
+            id: user.id,
             firstName: user.first_name,
             lastName: user.last_name
         }
