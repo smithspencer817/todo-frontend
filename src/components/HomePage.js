@@ -15,7 +15,7 @@ function HomePage(props) {
     }, []);
 
     return(
-        <div>
+        <div id="home-page">
             <ListForm />
             <ListsContainer lists={props.lists}/>
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { deleteList } from '../actions/lists';
 import { connect } from 'react-redux';
 
-function List(props) {
+function HomeList(props) {
     const { name, id } = props.list
 
     function handleDelete(id) {
@@ -18,8 +18,11 @@ function List(props) {
     }
 
     return(
-        <li>{name} {id} <button onClick={() => handleDelete(id)}>X</button></li>
+        <div className="home-page-list">
+            <div>{name.toUpperCase()}</div>
+            <div onClick={() => handleDelete(id)}>x</div>
+        </div>
     )
 }
 
-export default connect(null, { deleteList })(List);
+export default connect(null, { deleteList })(HomeList);
