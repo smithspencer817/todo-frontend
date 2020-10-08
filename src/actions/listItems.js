@@ -5,9 +5,9 @@ export const addListItem = item => {
     }
 }
 
-export const removeListItem = itemId => {
+export const deleteListItem = itemId => {
     return {
-        type: 'REMOVE_LIST_ITEM',
+        type: 'DELETE_LIST_ITEM',
         itemId
     }
 }

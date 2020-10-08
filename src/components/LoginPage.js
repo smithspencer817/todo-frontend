@@ -1,8 +1,10 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addCurrentUser } from '../actions/user';
 
-export default function LoginPage() {
+function LoginPage(props) {
 
     let history = useHistory();
 
@@ -27,8 +29,8 @@ export default function LoginPage() {
             console.log('not found');
           } else {
             document.cookie = `authToken=${res.token}`;
+            props.addCurrentUser(res.user);
             history.push('/home');
-            console.log(res.user)
           }
         });
         form.reset();
@@ -56,5 +58,7 @@ export default function LoginPage() {
                 </Form>
             </div>
         </div>
-    )
-}
+    );
+};
+
+export default connect(null, { addCurrentUser })(LoginPage);
