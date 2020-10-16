@@ -12,7 +12,7 @@ function ListForm(props) {
         const token = document.cookie.slice(10);
         const newList = {
             name: name,
-            user_id: 1
+            user_id: props.user.id
         }
         fetch('http://localhost:3000/api/lists', {
             method: 'POST',
@@ -24,10 +24,7 @@ function ListForm(props) {
             body: JSON.stringify(newList)
         })
         .then(res => res.json())
-        .then(json => {
-            const newList = json.newList.rows[0]
-            props.addList(newList)
-        })
+        .then(json => props.addList(json['list']))
         event.target.reset();
     }
 
@@ -49,4 +46,10 @@ function ListForm(props) {
     );
 };
 
-export default connect(null, { addList })(ListForm);
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, { addList })(ListForm);

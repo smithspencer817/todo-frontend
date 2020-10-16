@@ -8,6 +8,7 @@ function HomePage(props) {
 
     useEffect(() => {
         const id = props.user.id
+        
         fetch(`http://localhost:3000/api/users/${id}/lists`)
         .then(res => res.json())
         .then(lists => lists.map(list => props.addList(list)))
