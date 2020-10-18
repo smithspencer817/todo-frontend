@@ -13,6 +13,7 @@
   padding: 30px;
   border-radius: 10px;
   text-align: center;
+  max-width: 253px;
 }
 
 #login-title-container {
@@ -25,6 +26,32 @@
 
 .profile-form-button {
   border-radius: 50px;
+}
+
+/* -------------------- sign in page -------------------- */
+
+.sign-up-page-fine-print {
+  text-align: left;
+  font-size: 10px;
+  color: white !important;
+  font-weight: 300;
+}
+
+#sign-up-page-error-box {
+  width: 100%;
+  padding: 0px;
+  border-radius: 4px;
+  background-color: rgb(255, 154, 72);
+  font-size: 10px;
+  text-align: left;
+  color: red;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+#sign-up-page-error-box > p {
+  margin: 0px;
+  margin-left: 5px;
 }
 
 /* -------------------- home page -------------------- */
