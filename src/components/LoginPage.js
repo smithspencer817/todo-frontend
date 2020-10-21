@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -7,6 +7,7 @@ import { addCurrentUser } from '../actions/user';
 function LoginPage(props) {
 
     let history = useHistory();
+    const [error, setError] = useState('');
 
     function handleLogin(e) {
         e.preventDefault();
@@ -26,7 +27,7 @@ function LoginPage(props) {
         .then(res => res.json())
         .then(res => {
           if (res === 'no match') {
-            console.log('not found');
+            setError('username or password did not match');
           } else {
             document.cookie = `authToken=${res.token}`;
             props.addCurrentUser(res.user);
@@ -40,15 +41,23 @@ function LoginPage(props) {
         <div id="login-page">
             <div id="login-page-form-container">
                 <div id="login-title-container">
-                    <h1 id="login-title-text">Do Me!</h1>
+                    <h1 id="login-title-text">To Do List</h1>
                 </div>
                 <Form onSubmit={(e) => handleLogin(e)}>
                     <Form.Group>
                         <Form.Control type="text" placeholder="Username" />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control type="text" placeholder="Password" />
+                        <Form.Control type="password" placeholder="Password" />
                     </Form.Group>
+                    {
+                        error === "" ?
+                        null
+                        :
+                        <div className="login-page-error-box">
+                            <p>{error}</p>
+                        </div>
+                    }
                     <Button className="profile-form-button" variant="light" type="submit" size="md" block>
                         Sign In
                     </Button>

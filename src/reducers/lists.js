@@ -2,7 +2,7 @@ export default function manageLists(state = [], action) {
     let idx;
     switch (action.type) {
         case 'ADD_LIST':
-            return [...state, action.list]
+            return [action.list, ...state]
         case 'DELETE_LIST':
             idx = state.findIndex(list => list.id === action.listId);
             return [

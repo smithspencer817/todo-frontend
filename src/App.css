@@ -37,21 +37,23 @@
   font-weight: 300;
 }
 
-#sign-up-page-error-box {
+.login-page-error-box {
   width: 100%;
-  padding: 0px;
+  padding: 10px;
   border-radius: 4px;
-  background-color: rgb(255, 154, 72);
+  background-color: rgb(255, 168, 97);
   font-size: 10px;
-  text-align: left;
+  text-align: center;
   color: red;
-  display: inline-block;
+  display: flex;
   margin-bottom: 20px;
+  height: 26px;
+  align-items: center;
+  min-height: 40px;
 }
 
-#sign-up-page-error-box > p {
+.login-page-error-box > p {
   margin: 0px;
-  margin-left: 5px;
 }
 
 /* -------------------- home page -------------------- */

@@ -29,8 +29,9 @@ function SignUpPage(props) {
         })
         .then(res => res.json())
         .then(res => {
-            if (res[0] !== undefined) {
-                setError(res[0].message)
+            if (true) {
+                // setError(res[0].message)
+                console.log(res)
             } else {
                 fetch('http://localhost:3000/api/login', {
                     method: 'POST',
@@ -47,6 +48,7 @@ function SignUpPage(props) {
                 });
             }
         })
+        .catch(err => console.log(err))
         form.reset();
       }
 
@@ -70,7 +72,7 @@ function SignUpPage(props) {
                         </Form.Text>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control type="text" placeholder="Password" />
+                        <Form.Control type="password" placeholder="Password" />
                         <Form.Text className="text-muted sign-up-page-fine-print">
                         Between 1 and 26 characters
                         </Form.Text>
@@ -79,7 +81,7 @@ function SignUpPage(props) {
                         error === "" ?
                         null
                         :
-                        <div id="sign-up-page-error-box">
+                        <div className="login-page-error-box">
                             <p>{error}</p>
                         </div>
                     }
