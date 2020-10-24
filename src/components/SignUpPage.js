@@ -29,26 +29,25 @@ function SignUpPage(props) {
         })
         .then(res => res.json())
         .then(res => {
-            if (true) {
-                // setError(res[0].message)
-                console.log(res)
+            if (res.length) {
+                setError(res[0].message)
             } else {
                 fetch('http://localhost:3000/api/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(res)
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(res)
                 })
                 .then(res => res.json())
                 .then(res => {
                     document.cookie = `authToken=${res.token}`;
                     props.addCurrentUser(res.user);
                     history.push('/home');
-                });
+                })
             }
         })
-        .catch(err => console.log(err))
         form.reset();
       }
 
