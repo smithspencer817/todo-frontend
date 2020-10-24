@@ -20,7 +20,8 @@ function LoginPage(props) {
         fetch('http://localhost:3000/api/login', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           },
           body: JSON.stringify(loginInfo)
         })

@@ -8,7 +8,7 @@ import { addCurrentUser } from '../actions/user';
 function SignUpPage(props) {
 
     let history = useHistory();
-    const [error, setError] = useState('')
+    const [error, setError] = useState('');
 
     function handleNewUser(e) {
         e.preventDefault();
@@ -29,25 +29,14 @@ function SignUpPage(props) {
         })
         .then(res => res.json())
         .then(res => {
-            // if error, res is an array with one error object [{...}]
+            // if error, user is an array with one error object [{...}]
             if (res.length) {
                 setError(res[0].message)
-            // if no error, res is a user object
+            // if no error, res is an object with user and token keys
             } else {
-                fetch('http://localhost:3000/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(res)
-                })
-                .then(res => res.json())
-                .then(res => {
-                    document.cookie = `authToken=${res.token}`;
-                    props.addCurrentUser(res.user);
-                    history.push('/home');
-                })
+                document.cookie = `authToken=${res.token}`;
+                props.addCurrentUser(res.user);
+                history.push('/home');
             }
         })
         form.reset();
