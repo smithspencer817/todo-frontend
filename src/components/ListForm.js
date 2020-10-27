@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { addList } from '../actions/lists';
 
@@ -35,49 +35,41 @@ function ListForm(props) {
         event.target.reset();
     }
 
-    return(
+    return (
         <div>
             <Button 
-                className="profile-form-button"
                 onClick={() => setModalShow(true)} 
                 variant="light"
                 size="md"
                 block>
                 Create New List
             </Button>
-            <ListFormModal 
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-            />
+            <Modal
+            size="lg"
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                What do you want to name your list?
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form onSubmit={(e) => handleSubmit(e) }>
+                    <Form.Group>
+                        <Form.Label>Enter a name:</Form.Label>
+                        <Form.Control placeholder="List Name..." onChange={(e) => setName(e.target.value)}/>
+                        <Form.Text className="text-muted">
+                        List name must be between 1 and 26 characters
+                        </Form.Text>
+                    </Form.Group>
+                    <Button variant="primary" type="submit" className="new-list-form-button">Submit</Button>
+                </Form>
+            </Modal.Body>
+            </Modal>
         </div>
-    );
-};
-
-function ListFormModal(props) {
-    return (
-        <Modal
-          {...props}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-              Modal heading
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <h4>Centered Modal</h4>
-            <p>
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-              consectetur ac, vestibulum at eros.
-            </p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={props.onHide}>Close</Button>
-          </Modal.Footer>
-        </Modal>
       );
 }
 
