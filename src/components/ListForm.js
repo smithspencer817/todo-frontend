@@ -45,6 +45,7 @@ function ListForm(props) {
                 Create New List
             </Button>
             <Modal
+            id="new-list-modal"
             size="lg"
             show={modalShow}
             onHide={() => setModalShow(false)}
@@ -65,7 +66,7 @@ function ListForm(props) {
                         List name must be between 1 and 26 characters
                         </Form.Text>
                     </Form.Group>
-                    <Button variant="primary" type="submit" className="new-list-form-button">Submit</Button>
+                    <Button variant="success" type="submit" className="new-list-form-button">Submit</Button>
                 </Form>
             </Modal.Body>
             </Modal>
