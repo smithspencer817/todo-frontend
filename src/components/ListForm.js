@@ -35,7 +35,7 @@ function ListForm(props) {
                 setTimeout(() => {
                     setError("")
                     setModalShow(false)
-                }, 2000)
+                }, 1000)
             }
         })
         event.target.reset();
