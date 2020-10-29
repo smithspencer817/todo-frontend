@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
+import { Modal, Button, Form, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { addList } from '../actions/lists';
 
 function ListForm(props) {
 
-    const [name, setName] = useState('');
+    const [name, setName] = useState("");
     const [modalShow, setModalShow] = useState(false);
+    const [error, setError] = useState("");
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -27,9 +28,14 @@ function ListForm(props) {
         .then(res => res.json())
         .then(list => {
             if (list.length) {
-                console.log(list)
+                setError(list[0].message)
             } else {
-                props.addList(list['list'])
+                props.addList(list["list"])
+                setError("New List Created")
+                setTimeout(() => {
+                    setError("")
+                    setModalShow(false)
+                }, 2000)
             }
         })
         event.target.reset();
@@ -66,6 +72,13 @@ function ListForm(props) {
                         List name must be between 1 and 26 characters
                         </Form.Text>
                     </Form.Group>
+                    {(() => {
+                        switch (error) {
+                            case "": return null;
+                            case "New List Created": return <Alert variant="success">{error}</Alert>;
+                            default: return <Alert variant="danger">{error}</Alert>;
+                        }
+                    })()}
                     <Button variant="success" type="submit" className="new-list-form-button">Submit</Button>
                 </Form>
             </Modal.Body>
