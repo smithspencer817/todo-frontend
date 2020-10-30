@@ -13,7 +13,6 @@ function LogOut(props) {
     function handleLogout() {
         props.removeCurrentUser()
         props.removeCurrentLists()
-        // cookie is deleted but only after refresh for now
         document.cookie = "authToken=; Expires=Thu, 1 Jan 1970 14:28:00 GMT; path=/;"
         history.push('/login')
     }
@@ -59,4 +58,11 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { removeCurrentUser, removeCurrentLists })(LogOut);
+const mapDispatchToProps = dispatch => {
+    return {
+        removeCurrentUser: () => dispatch(removeCurrentUser()),
+        removeCurrentLists: () => dispatch(removeCurrentLists())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogOut);
