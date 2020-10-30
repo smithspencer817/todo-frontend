@@ -102,3 +102,9 @@
   float: right;
   margin-right: 5px;
 }
+
+#home-page-nav-bar {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70%;
+}

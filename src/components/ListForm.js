@@ -49,7 +49,7 @@ function ListForm(props) {
                 size="md"
                 block
             >
-                Create New List
+                New List
             </Button>
             <Modal
             id="new-list-modal"

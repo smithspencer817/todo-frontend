@@ -8,8 +8,10 @@ function HomePage(props) {
 
     return(
         <div id="home-page">
-            <ListForm />
-            <LogOut />
+            <div id="home-page-nav-bar">
+                <ListForm />
+                <LogOut />
+            </div>
             <ListsContainer lists={props.lists}/>
         </div>
     );
