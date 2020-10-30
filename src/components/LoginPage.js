@@ -6,7 +6,7 @@ import { fetchUser } from '../actions/user';
 
 function LoginPage(props) {
 
-  let history = useHistory();
+    let history = useHistory();
 
     useEffect(() => {
       if (props.user.id) {

@@ -2,7 +2,6 @@ import React from 'react';
 import ListsContainer from '../containers/ListsContainer';
 import ListForm from '../components/ListForm';
 import { connect } from 'react-redux';
-import { addList } from '../actions/lists';
 
 function HomePage(props) {
 
@@ -21,4 +20,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { addList })(HomePage);
+export default connect(mapStateToProps)(HomePage);

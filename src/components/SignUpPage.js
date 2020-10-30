@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addCurrentUser } from '../actions/user';
+import { createNewUser } from '../actions/user';
 
 
 function SignUpPage(props) {
 
     let history = useHistory();
-    const [error, setError] = useState('');
+
+    useEffect(() => {
+        if (props.user.id) {
+          history.push('/home')
+        }
+      },[props.user.id, history])
 
     function handleNewUser(e) {
         e.preventDefault();
@@ -19,26 +24,7 @@ function SignUpPage(props) {
             username: form[2].value,
             password: form[3].value
         }
-        fetch('http://localhost:3000/api/users', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(newUserInfo)
-        })
-        .then(res => res.json())
-        .then(res => {
-            // if error, user is an array with one error object [{...}]
-            if (res.length) {
-                setError(res[0].message)
-            // if no error, res is an object with user and token keys
-            } else {
-                document.cookie = `authToken=${res.token}`;
-                props.addCurrentUser(res.user);
-                history.push('/home');
-            }
-        })
+        props.createNewUser(newUserInfo)
         form.reset();
       }
 
@@ -68,11 +54,11 @@ function SignUpPage(props) {
                         </Form.Text>
                     </Form.Group>
                     {
-                        error === "" ?
+                        props.user.error === "" ?
                         null
                         :
                         <div className="login-page-error-box">
-                            <p>{error}</p>
+                            <p>{props.user.error}</p>
                         </div>
                     }
                     <Button className="profile-form-button" variant="light" type="submit" size="md" block>
@@ -84,4 +70,10 @@ function SignUpPage(props) {
     );
 };
 
-export default connect(null, { addCurrentUser })(SignUpPage);
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+  }
+
+export default connect(mapStateToProps, { createNewUser })(SignUpPage);

@@ -47,3 +47,25 @@ export const fetchUser = login => {
         });
     }
 }
+
+export const createNewUser = user => {
+    return (dispatch) => {
+      fetch('http://localhost:3000/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(user)
+      })
+      .then(res => res.json())
+      .then(res => {
+          if (res.length) {
+              dispatch(fetchUserFailure(res[0].message));
+          } else {
+              document.cookie = `authToken=${res.token}`;
+              dispatch(addCurrentUser(res.user));
+          }
+      })
+    }
+}
