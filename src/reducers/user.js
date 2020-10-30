@@ -9,7 +9,13 @@ export default function manageUser(state = {
         case 'ADD_CURRENT_USER':
             return Object.assign({}, state, action.user)
         case 'REMOVE_CURRENT_USER':
-            return {...state}
+            return {
+                username: '',
+                id: null,
+                firstName: '',
+                lastName: '',
+                error: ''
+            }
         case 'FETCH_USER_FAILURE':
             return {...state, error: action.error}
         default:

@@ -3,6 +3,8 @@ export default function manageLists(state = [], action) {
     switch (action.type) {
         case 'ADD_LIST':
             return [action.list, ...state]
+        case 'REMOVE_CURRENT_LISTS':
+            return []
         case 'DELETE_LIST':
             idx = state.findIndex(list => list.id === action.listId);
             return [

@@ -12,6 +12,12 @@ export const deleteList = listId => {
     }
 }
 
+export const removeCurrentLists = () => {
+    return {
+        type: 'REMOVE_CURRENT_LISTS'
+    }
+}
+
 export const fetchLists = id => {
     return (dispatch) => {
         fetch(`http://localhost:3000/api/users/${id}/lists`)

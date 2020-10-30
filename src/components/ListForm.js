@@ -47,13 +47,15 @@ function ListForm(props) {
                 onClick={() => setModalShow(true)} 
                 variant="light"
                 size="md"
-                block>
+                block
+            >
                 Create New List
             </Button>
             <Modal
             id="new-list-modal"
             size="lg"
             show={modalShow}
+            backdrop="static"
             onHide={() => setModalShow(false)}
             aria-labelledby="contained-modal-title-vcenter"
             centered

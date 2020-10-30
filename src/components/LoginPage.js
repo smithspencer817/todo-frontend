@@ -29,7 +29,7 @@ function LoginPage(props) {
         <div id="login-page">
             <div id="login-page-form-container">
                 <div id="login-title-container">
-                    <h1 id="login-title-text">To Do List</h1>
+                    <h1 id="login-title-text">Do Me!</h1>
                 </div>
                 <Form onSubmit={(e) => handleLogin(e)}>
                     <Form.Group>

@@ -40,7 +40,7 @@ export const fetchUser = login => {
           if (res.length) {
             dispatch(fetchUserFailure(res))
           } else {
-            document.cookie = `authToken=${res.token}`;
+            document.cookie = `authToken=${res.token}; Expires=Wed, 5 Oct 2050 14:28:00 GMT;`;
             dispatch(addCurrentUser(res.user))
             dispatch(fetchLists(res.user.id))
           }
