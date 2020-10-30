@@ -33,8 +33,8 @@ function ListForm(props) {
                 props.addList(list["list"])
                 setError("New List Created")
                 setTimeout(() => {
-                    setError("")
                     setModalShow(false)
+                    setError("")
                 }, 1000)
             }
         })

@@ -11,3 +11,11 @@ export const deleteList = listId => {
         listId
     }
 }
+
+export const fetchLists = id => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/api/users/${id}/lists`)
+        .then(res => res.json())
+        .then(lists => lists.forEach(list => dispatch(addList(list))))
+    }
+}

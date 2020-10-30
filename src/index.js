@@ -5,23 +5,18 @@ import * as serviceWorker from './serviceWorker';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import rootReducer from './reducers/index';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import {
-  BrowserRouter as Router, Route
-} from "react-router-dom";
-
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './config/ReduxStore';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <Route path="/" component={App} />
-    </Router>
+    <PersistGate loading={null} persistor={persistor}>
+      <Router>
+        <Route path="/" component={App} />
+      </Router>
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );

@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addCurrentUser } from '../actions/user';
+import { fetchUser } from '../actions/user';
 
 function LoginPage(props) {
 
-    let history = useHistory();
-    const [error, setError] = useState('');
+  let history = useHistory();
+
+    useEffect(() => {
+      if (props.user.id) {
+        history.push('/home')
+      }
+    },[props.user.id, history])
 
     function handleLogin(e) {
         e.preventDefault();
@@ -16,25 +21,7 @@ function LoginPage(props) {
           username: form[0].value,
           password: form[1].value
         }
-        
-        fetch('http://localhost:3000/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(loginInfo)
-        })
-        .then(res => res.json())
-        .then(res => {
-          if (res === 'no match') {
-            setError('username or password did not match');
-          } else {
-            document.cookie = `authToken=${res.token}`;
-            props.addCurrentUser(res.user);
-            history.push('/home');
-          }
-        });
+        props.fetchUser(loginInfo)
         form.reset();
       }
 
@@ -52,11 +39,11 @@ function LoginPage(props) {
                         <Form.Control type="password" placeholder="Password" />
                     </Form.Group>
                     {
-                        error === "" ?
+                        props.user.error === "" ?
                         null
                         :
                         <div className="login-page-error-box">
-                            <p>{error}</p>
+                            <p>{props.user.error}</p>
                         </div>
                     }
                     <Button className="profile-form-button" variant="light" type="submit" size="md" block>
@@ -71,4 +58,10 @@ function LoginPage(props) {
     );
 };
 
-export default connect(null, { addCurrentUser })(LoginPage);
+const mapStateToProps = state => {
+  return {
+      user: state.user
+  }
+}
+
+export default connect(mapStateToProps, { fetchUser })(LoginPage);
