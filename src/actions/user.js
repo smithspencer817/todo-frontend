@@ -6,8 +6,8 @@ export const addCurrentUser = user => {
         user: {
             username: user.username,
             id: user.id,
-            firstName: user.first_name,
-            lastName: user.last_name
+            firstName: user.firstName,
+            lastName: user.lastName
         }
     }
 }
@@ -44,7 +44,7 @@ export const fetchUser = login => {
             dispatch(addCurrentUser(res.user))
             dispatch(fetchLists(res.user.id))
           }
-        });
+        })
     }
 }
 
@@ -63,7 +63,7 @@ export const createNewUser = user => {
           if (res.length) {
               dispatch(fetchUserFailure(res[0].message));
           } else {
-              document.cookie = `authToken=${res.token}`;
+              document.cookie = `authToken=${res.token}; Expires=Wed, 5 Oct 2050 14:28:00 GMT;`;
               dispatch(addCurrentUser(res.user));
           }
       })

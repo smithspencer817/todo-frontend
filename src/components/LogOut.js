@@ -36,9 +36,9 @@ function LogOut(props) {
                 centered
             >
                 <Modal.Header>
-                <Modal.Title>We're sad to see you go, {props.user.username}...</Modal.Title>
+                <Modal.Title className="logout-modal">We're sad to see you go, {props.user.username}...</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body className="logout-modal">
                 Are you sure you want to log out?
                 </Modal.Body>
                 <Modal.Footer>

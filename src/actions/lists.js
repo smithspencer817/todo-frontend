@@ -20,7 +20,12 @@ export const removeCurrentLists = () => {
 
 export const fetchLists = id => {
     return (dispatch) => {
-        fetch(`http://localhost:3000/api/users/${id}/lists`)
+        const token = document.cookie.slice(10);
+        fetch(`http://localhost:3000/api/users/${id}/lists`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
         .then(res => res.json())
         .then(lists => lists.forEach(list => dispatch(addList(list))))
     }

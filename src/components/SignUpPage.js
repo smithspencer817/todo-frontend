@@ -19,8 +19,8 @@ function SignUpPage(props) {
         e.preventDefault();
         const form = e.target;
         const newUserInfo = {
-            first_name: form[0].value,
-            last_name: form[1].value,
+            firstName: form[0].value,
+            lastName: form[1].value,
             username: form[2].value,
             password: form[3].value
         }

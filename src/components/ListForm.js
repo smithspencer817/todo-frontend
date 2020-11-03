@@ -14,7 +14,7 @@ function ListForm(props) {
         const token = document.cookie.slice(10);
         const newList = {
             name: name,
-            user_id: props.user.id
+            userId: props.user.id
         }
         fetch('http://localhost:3000/api/lists', {
             method: 'POST',

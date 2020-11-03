@@ -108,3 +108,7 @@
   justify-content: space-evenly;
   width: 70%;
 }
+
+.logout-modal {
+  text-align: center;
+}
