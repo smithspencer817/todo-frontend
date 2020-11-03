@@ -81,12 +81,12 @@
 }
 
 #home-page-list-container {
-  background-color: rgb(255, 130, 28);
+  background: linear-gradient(to top, rgb(255, 137, 40), rgb(255, 130, 28));
   padding: 30px;
   border-radius: 10px;
   text-align: center;
   width: 70%;
-  height: 70%;
+  height: 75%;
   margin-top: 30px;
   overflow: auto;
 }
@@ -97,7 +97,7 @@
 
 .home-page-list {
   background-color: rgb(214, 114, 32);
-  border: 2px solid rgb(180, 92, 20);
+  border: 2px solid rgb(145, 74, 16);
   list-style-type: none;
   border-radius: 20px;
   margin-bottom: 20px;
@@ -109,6 +109,7 @@
   padding: 0px 20px 0px 20px;
   font-size: 16px;
   min-height: 50px;
+  box-shadow: 7px 7px 7px rgb(99, 50, 9);
 }
 
 .home-page-list-buttons {
