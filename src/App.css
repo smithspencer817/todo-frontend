@@ -67,6 +67,13 @@
   flex-direction: column;
 }
 
+#home-page-nav-bar {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70%;
+  flex-wrap: wrap-reverse;
+}
+
 #home-page-list-container {
   background-color: rgb(255, 130, 28);
   padding: 30px;
@@ -95,18 +102,20 @@
   align-content: center;
   display: flex;
   padding: 0px 20px 0px 20px;
-  font-size: 25px;
+  font-size: 16px;
 }
+
+.home-page-list-buttons {
+  display: flex;
+  width: 25%;
+  justify-content: space-evenly;
+}
+
+/* ------------------- new list modal --------------------- */
 
 .new-list-form-button {
   float: right;
   margin-right: 5px;
-}
-
-#home-page-nav-bar {
-  display: flex;
-  justify-content: space-evenly;
-  width: 70%;
 }
 
 .logout-modal {

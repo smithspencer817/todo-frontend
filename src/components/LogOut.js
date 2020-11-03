@@ -22,7 +22,7 @@ function LogOut(props) {
             <Button 
                 variant="light"
                 onClick={() => setShow(true)}
-                size="md"
+                size="sm"
                 block
             >
                 Log Out
@@ -36,16 +36,20 @@ function LogOut(props) {
                 centered
             >
                 <Modal.Header>
-                <Modal.Title className="logout-modal">We're sad to see you go, {props.user.username}...</Modal.Title>
+                <Modal.Title className="logout-modal">
+                    We're sad to see you go, {props.user.username}...
+                </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="logout-modal">
-                Are you sure you want to log out?
+                    Are you sure you want to log out?
                 </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={() => setShow(false)}>
                     Go Back
                 </Button>
-                <Button variant="danger" onClick={handleLogout}>Log Out</Button>
+                <Button variant="danger" onClick={handleLogout}>
+                    Log Out
+                </Button>
                 </Modal.Footer>
             </Modal>
         </div>
