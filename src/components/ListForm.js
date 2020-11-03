@@ -31,11 +31,10 @@ function ListForm(props) {
                 setError(list[0].message)
             } else {
                 props.addList(list["list"])
-                setError("New List Created")
                 setTimeout(() => {
                     setModalShow(false)
                     setError("")
-                }, 1000)
+                }, 500)
             }
         })
         event.target.reset();
@@ -62,7 +61,7 @@ function ListForm(props) {
             >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                What do you want to name your list?
+                Name your list
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -74,6 +73,7 @@ function ListForm(props) {
                         List name must be between 1 and 26 characters
                         </Form.Text>
                     </Form.Group>
+                    <Form.Group id="new-list-form-button-container">
                     {(() => {
                         switch (error) {
                             case "": return null;
@@ -81,7 +81,8 @@ function ListForm(props) {
                             default: return <Alert variant="danger">{error}</Alert>;
                         }
                     })()}
-                    <Button variant="success" type="submit" className="new-list-form-button">Submit</Button>
+                    <Button type="submit" id="new-list-form-button">Add New List</Button>
+                    </Form.Group>
                 </Form>
             </Modal.Body>
             </Modal>

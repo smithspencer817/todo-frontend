@@ -81,7 +81,7 @@
 }
 
 #home-page-list-container {
-  background: linear-gradient(to top, rgb(255, 137, 40), rgb(255, 130, 28));
+  background: linear-gradient(to top, rgb(255, 141, 48), rgb(255, 130, 28));
   padding: 30px;
   border-radius: 10px;
   text-align: center;
@@ -122,11 +122,30 @@
 
 /* ------------------- new list modal --------------------- */
 
-.new-list-form-button {
-  float: right;
-  margin-right: 5px;
+#new-list-form-button {
+  background-color: rgb(255, 130, 28);
+  border-radius: 25px;
+  border: 7px solid rgb(255, 130, 28);
+  color: white;
+  margin-bottom: -10px;
+  width: 70%;
+  font-size: 22px;
+}
+
+#new-list-form-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#new-list-form-button-container {
+  text-align: center;
 }
 
 .logout-modal {
   text-align: center;
+}
+
+#new-list-modal {
+  margin-left: 90px;
+  margin-right: 90px;
 }
