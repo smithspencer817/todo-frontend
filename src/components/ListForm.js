@@ -46,7 +46,7 @@ function ListForm(props) {
             <Button 
                 onClick={() => setModalShow(true)} 
                 variant="light"
-                size="sm"
+                size="lg"
                 block
             >
                 New List

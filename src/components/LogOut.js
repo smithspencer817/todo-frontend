@@ -22,7 +22,7 @@ function LogOut(props) {
             <Button 
                 variant="light"
                 onClick={() => setShow(true)}
-                size="sm"
+                size="lg"
                 block
             >
                 Log Out
