@@ -101,13 +101,12 @@
 
 .individual-home-list-container {
   padding: 10px;
-  transition: padding 0.5s;
+  transition: padding 0.5s, font-size 0.5s;
   height: 12%;
 }
 
 .home-page-list {
   background-color: rgb(202, 100, 16);
-  /* border: 2px solid rgb(145, 74, 16); */
   list-style-type: none;
   border-radius: 20px;
   color: white;
@@ -116,13 +115,19 @@
   align-content: center;
   display: flex;
   padding: 0px 20px 0px 20px;
-  font-size: 16px;
   height: 100%;
+  font-size: 12px;
+  transition: padding 0.5s, font-size 0.5s;
   box-shadow: 6px 6px 8px rgb(99, 50, 9);
 }
 
 .individual-home-list-container:hover {
-  padding: 7px;
+  padding: 3px;
+}
+
+.individual-home-list-container:hover div {
+  font-size: 20px;
+  transition: font-size 0.5s;
 }
 
 .home-page-list-buttons {
