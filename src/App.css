@@ -80,6 +80,11 @@
   color: white;
 }
 
+#home-page-nav-bar button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 #home-page-list-container {
   background: rgb(255, 130, 28);
   padding: 15px;
@@ -117,7 +122,7 @@
   padding: 0px 20px 0px 20px;
   height: 100%;
   font-size: 12px;
-  transition: padding 0.5s, font-size 0.5s;
+  transition: font-size 0.5s, border-radius 0.5s;
   box-shadow: 6px 6px 8px rgb(99, 50, 9);
 }
 
@@ -127,7 +132,8 @@
 
 .individual-home-list-container:hover div {
   font-size: 20px;
-  transition: font-size 0.5s;
+  border-radius: 15px;
+  transition: font-size 0.5s, border-radius 0.5s;
 }
 
 .home-page-list-buttons {
