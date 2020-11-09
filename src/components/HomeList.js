@@ -38,7 +38,7 @@ function HomeList(props) {
                 editing ? 
                 <div>
                     <form>
-                        <input type="text" onKeyDown={(e) => handleEdit(e)}></input>
+                        <input className="list-name-edit-form" type="text" onKeyDown={(e) => handleEdit(e)}></input>
                     </form>
                 </div>
                 : 

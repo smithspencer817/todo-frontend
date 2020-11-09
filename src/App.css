@@ -120,6 +120,18 @@
   font-size: 20px;
 }
 
+.list-name-edit-form {
+  border: 2px solid rgb(145, 74, 16);
+  border-radius: 10px;
+  background-color: rgb(255, 130, 28);
+  color: white;
+}
+
+.list-name-edit-form:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 /* ------------------- new list modal --------------------- */
 
 #new-list-form-button {
