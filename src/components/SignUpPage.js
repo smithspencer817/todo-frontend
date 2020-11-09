@@ -13,7 +13,8 @@ function SignUpPage(props) {
         if (props.user.id) {
           history.push('/home')
         }
-      },[props.user.id, history])
+      },[props.user.id, history]
+    );
 
     function handleNewUser(e) {
         e.preventDefault();

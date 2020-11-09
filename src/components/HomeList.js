@@ -9,6 +9,7 @@ function HomeList(props) {
     const [editing, setEditing] = useState(false)
 
     function handleEdit(e) {
+        // key code 13 is the 'enter' key
         if (e.keyCode === 13) {
             e.preventDefault();
             const data = {

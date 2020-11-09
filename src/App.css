@@ -81,8 +81,8 @@
 }
 
 #home-page-list-container {
-  background: linear-gradient(to top, rgb(223, 114, 25), rgb(255, 130, 28));
-  padding: 30px;
+  background: rgb(255, 130, 28);
+  padding: 15px;
   border-radius: 10px;
   text-align: center;
   width: 70%;
@@ -91,16 +91,25 @@
   overflow: auto;
 }
 
+#home-page-list-container:hover {
+  cursor: pointer;
+}
+
 #home-page-list-container::-webkit-scrollbar {
   display: none;
 }
 
+.individual-home-list-container {
+  padding: 10px;
+  transition: padding 0.5s;
+  height: 12%;
+}
+
 .home-page-list {
-  background-color: rgb(214, 114, 32);
-  border: 2px solid rgb(145, 74, 16);
+  background-color: rgb(202, 100, 16);
+  /* border: 2px solid rgb(145, 74, 16); */
   list-style-type: none;
   border-radius: 20px;
-  margin-bottom: 20px;
   color: white;
   justify-content: space-between;
   align-items: center;
@@ -108,8 +117,12 @@
   display: flex;
   padding: 0px 20px 0px 20px;
   font-size: 16px;
-  min-height: 50px;
-  box-shadow: 7px 7px 7px rgb(99, 50, 9);
+  height: 100%;
+  box-shadow: 6px 6px 8px rgb(99, 50, 9);
+}
+
+.individual-home-list-container:hover {
+  padding: 7px;
 }
 
 .home-page-list-buttons {
