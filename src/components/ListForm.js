@@ -77,7 +77,6 @@ function ListForm(props) {
                     {(() => {
                         switch (error) {
                             case "": return null;
-                            case "New List Created": return <Alert variant="success">{error}</Alert>;
                             default: return <Alert variant="danger">{error}</Alert>;
                         }
                     })()}

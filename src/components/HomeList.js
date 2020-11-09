@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { deleteList } from '../actions/lists';
+import { deleteList, updateList } from '../actions/lists';
 import { connect } from 'react-redux';
 import { Trash, Pencil } from 'react-bootstrap-icons';
 
@@ -21,19 +21,12 @@ function HomeList(props) {
 
     function handleEdit(e) {
         if (e.keyCode === 13) {
-            const data = {
-                name: e.target.value
-            }
             e.preventDefault();
-            fetch(`http://localhost:3000/api/lists/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(data)
-        });
+            const data = {
+                name: e.target.value,
+                id: id
+            }
+            props.updateList(data)
             setEditing(false)
         }
         
@@ -59,4 +52,4 @@ function HomeList(props) {
     )
 }
 
-export default connect(null, { deleteList })(HomeList);
+export default connect(null, { deleteList, updateList })(HomeList);

@@ -28,6 +28,7 @@ function LogOut(props) {
                 Log Out
             </Button>
             <Modal
+                id="log-out-modal"
                 show={show}
                 onHide={() => setShow(false)}
                 backdrop="static"
@@ -36,18 +37,18 @@ function LogOut(props) {
                 centered
             >
                 <Modal.Header>
-                <Modal.Title className="logout-modal">
+                <Modal.Title>
                     We're sad to see you go, {props.user.username}...
                 </Modal.Title>
                 </Modal.Header>
-                <Modal.Body className="logout-modal">
+                <Modal.Body>
                     Are you sure you want to log out?
                 </Modal.Body>
-                <Modal.Footer>
-                <Button variant="secondary" onClick={() => setShow(false)}>
+                <Modal.Footer id="log-out-modal-buttons-container">
+                <Button className="log-out-modal-button" onClick={() => setShow(false)}>
                     Go Back
                 </Button>
-                <Button variant="danger" onClick={handleLogout}>
+                <Button className="log-out-modal-button" onClick={handleLogout}>
                     Log Out
                 </Button>
                 </Modal.Footer>

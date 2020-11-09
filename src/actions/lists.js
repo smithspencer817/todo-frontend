@@ -12,6 +12,23 @@ export const deleteList = listId => {
     }
 }
 
+export const updateList = listData => {
+    const token = document.cookie.slice(10);
+    fetch(`http://localhost:3000/api/lists/${listData.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(listData)
+    });
+    return {
+        type: 'UPDATE_LIST',
+        list: Object.assign({}, listData)
+    }
+}
+
 export const removeCurrentLists = () => {
     return {
         type: 'REMOVE_CURRENT_LISTS'

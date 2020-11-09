@@ -81,7 +81,7 @@
 }
 
 #home-page-list-container {
-  background: linear-gradient(to top, rgb(255, 141, 48), rgb(255, 130, 28));
+  background: linear-gradient(to top, rgb(223, 114, 25), rgb(255, 130, 28));
   padding: 30px;
   border-radius: 10px;
   text-align: center;
@@ -141,8 +141,25 @@
   text-align: center;
 }
 
-.logout-modal {
+#log-out-modal {
+  margin-left: 90px;
+  margin-right: 90px;
   text-align: center;
+}
+
+#log-out-modal-buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.log-out-modal-button {
+  background-color: rgb(255, 130, 28);
+  border-radius: 15px;
+  border: none;
+}
+
+.log-out-modal-button:hover {
+  background-color: rgb(228, 116, 24);
 }
 
 #new-list-modal {

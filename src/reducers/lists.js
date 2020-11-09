@@ -5,6 +5,10 @@ export default function manageLists(state = [], action) {
             return [action.list, ...state]
         case 'REMOVE_CURRENT_LISTS':
             return []
+        case 'UPDATE_LIST':
+            return state.map(list => 
+                list.id === action.list.id ? action.list : list
+            )
         case 'DELETE_LIST':
             idx = state.findIndex(list => list.id === action.listId);
             return [
