@@ -1,3 +1,5 @@
+const token = document.cookie.slice(10);
+
 export const addList = list => {
     return {
         type: 'ADD_LIST',
@@ -6,6 +8,13 @@ export const addList = list => {
 }
 
 export const deleteList = listId => {
+    fetch(`http://localhost:3000/api/lists/${listId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+    });
+
     return {
         type: 'DELETE_LIST',
         listId
@@ -13,7 +22,6 @@ export const deleteList = listId => {
 }
 
 export const updateList = listData => {
-    const token = document.cookie.slice(10);
     fetch(`http://localhost:3000/api/lists/${listData.id}`, {
             method: 'PUT',
             headers: {
@@ -23,6 +31,7 @@ export const updateList = listData => {
             },
             body: JSON.stringify(listData)
     });
+
     return {
         type: 'UPDATE_LIST',
         list: Object.assign({}, listData)
@@ -37,7 +46,6 @@ export const removeCurrentLists = () => {
 
 export const fetchLists = id => {
     return (dispatch) => {
-        const token = document.cookie.slice(10);
         fetch(`http://localhost:3000/api/users/${id}/lists`, {
             headers: {
                 'Authorization': `Bearer ${token}`

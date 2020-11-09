@@ -136,12 +136,12 @@
 
 #new-list-form-button {
   background-color: rgb(255, 130, 28);
-  border-radius: 25px;
-  border: 7px solid rgb(255, 130, 28);
+  border-radius: 20px;
+  border: 1px solid rgb(255, 130, 28);
   color: white;
   margin-bottom: -10px;
-  width: 70%;
-  font-size: 22px;
+  width: 50%;
+  font-size: 20px;
 }
 
 #new-list-form-button:focus {
@@ -172,9 +172,4 @@
 
 .log-out-modal-button:hover {
   background-color: rgb(228, 116, 24);
-}
-
-#new-list-modal {
-  margin-left: 90px;
-  margin-right: 90px;
 }

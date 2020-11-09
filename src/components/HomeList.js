@@ -4,20 +4,9 @@ import { connect } from 'react-redux';
 import { Trash, Pencil } from 'react-bootstrap-icons';
 
 function HomeList(props) {
+
     const { name, id } = props.list
-    const token = document.cookie.slice(10);
-
     const [editing, setEditing] = useState(false)
-
-    function handleDelete() {
-        fetch(`http://localhost:3000/api/lists/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        props.deleteList(id);
-    }
 
     function handleEdit(e) {
         if (e.keyCode === 13) {
@@ -29,7 +18,6 @@ function HomeList(props) {
             props.updateList(data)
             setEditing(false)
         }
-        
     }
 
     return (
@@ -46,7 +34,7 @@ function HomeList(props) {
             }
             <div className="home-page-list-buttons">
                 <Pencil onClick={() => setEditing(!editing)}></Pencil>
-                <Trash onClick={handleDelete}></Trash>
+                <Trash onClick={() => props.deleteList(id)}></Trash>
             </div>
         </div>
     )
