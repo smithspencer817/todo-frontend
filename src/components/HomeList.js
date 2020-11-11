@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { deleteList, updateList } from '../actions/lists';
 import { addCurrentWorkingList } from '../actions/currentWorkingList';
 import { addListItem } from '../actions/listItems';
@@ -8,7 +9,9 @@ import { Trash, Pencil } from 'react-bootstrap-icons';
 function HomeList(props) {
 
     const { name, id } = props.list
+
     const [editing, setEditing] = useState(false)
+    let history = useHistory();
 
     function handleEdit(e) {
         // key code 13 is the 'enter' key
@@ -28,7 +31,7 @@ function HomeList(props) {
         props.addCurrentWorkingList(props.list)
         // get all list items from that list and populate the container
         props.currentWorkingList.listItems.forEach(listItem => props.addListItem(listItem))
-
+        history.push('/list-view')
     }
 
     return (
