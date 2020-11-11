@@ -1,9 +1,24 @@
 import React from 'react';
+import ListItemsContainer from '../containers/ListItemContainer'
+import { connect } from 'react-redux';
 
-export default function ListView() {
+function ListView(props) {
     return(
         <div id="home-page">
-           <h1>Hello World</h1>
+           <div id="home-page-nav-bar">
+                <button>Back</button>
+                <button>Search</button>
+                <button>New List Item</button>
+            </div>
+            <ListItemsContainer listItems={props.listItems}/>
         </div>
     );
 };
+
+const mapStateToProps = state => {
+    return {
+        listItems: state.listItems
+    }
+}
+
+export default connect(mapStateToProps)(ListView);
