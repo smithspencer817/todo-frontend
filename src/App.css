@@ -122,18 +122,19 @@
   padding: 0px 20px 0px 20px;
   height: 100%;
   font-size: 12px;
-  transition: font-size 0.5s, border-radius 0.5s;
-  box-shadow: 6px 6px 8px rgb(99, 50, 9);
+  transition: font-size 0.5s, border-radius 0.5s, box-shadow 0.5s;
+  box-shadow: 3px 3px 3px rgb(99, 50, 9);
 }
 
 .individual-home-list-container:hover {
-  padding: 3px;
+  padding: 7px;
 }
 
-.individual-home-list-container:hover div {
-  font-size: 20px;
+.individual-home-list-container:hover > div {
+  font-size: 16px;
   border-radius: 15px;
-  transition: font-size 0.5s, border-radius 0.5s;
+  box-shadow: 8px 8px 8px rgb(99, 50, 9);
+  transition: font-size 0.5s, border-radius 0.5s, box-shadow 0.5s;
 }
 
 .home-page-list-buttons {
@@ -141,7 +142,7 @@
   width: 25%;
   justify-content: space-evenly;
   color: rgb(110, 61, 21);
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .list-name-edit-form {

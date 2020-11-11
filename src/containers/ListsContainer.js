@@ -6,7 +6,7 @@ export default function ListsContainer(props) {
         <div id="home-page-list-container">
             {
                 props.lists.map(list => 
-                    <div className="individual-home-list-container">
+                    <div className="individual-home-list-container" key={list.id}>
                         <HomeList list={list} key={list.id}/>
                     </div>
                 )

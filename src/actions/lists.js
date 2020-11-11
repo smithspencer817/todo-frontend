@@ -9,10 +9,10 @@ export const addList = list => {
 
 export const deleteList = listId => {
     fetch(`http://localhost:3000/api/lists/${listId}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
     });
 
     return {

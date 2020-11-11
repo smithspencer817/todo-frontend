@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { deleteList, updateList } from '../actions/lists';
+import { addCurrentWorkingList } from '../actions/currentWorkingList';
+import { addListItem } from '../actions/listItems';
 import { connect } from 'react-redux';
 import { Trash, Pencil } from 'react-bootstrap-icons';
 
@@ -21,17 +23,30 @@ function HomeList(props) {
         }
     }
 
+    function viewListItems() {
+        // set props.list to be the current working list
+        props.addCurrentWorkingList(props.list)
+        // get all list items from that list and populate the container
+        props.currentWorkingList.listItems.forEach(listItem => props.addListItem(listItem))
+
+    }
+
     return (
         <div className="home-page-list">
             {
                 editing ? 
                 <div>
                     <form>
-                        <input className="list-name-edit-form" type="text" onKeyDown={(e) => handleEdit(e)}></input>
+                        <input
+                            className="list-name-edit-form"
+                            type="text"
+                            onKeyDown={(e) => handleEdit(e)}
+                        >
+                        </input>
                     </form>
                 </div>
                 : 
-                <div>{name.toUpperCase()}</div>
+                <div onClick={() => viewListItems()}>{name.toUpperCase()}</div>
             }
             <div className="home-page-list-buttons">
                 <Pencil onClick={() => setEditing(!editing)}></Pencil>
@@ -41,4 +56,10 @@ function HomeList(props) {
     )
 }
 
-export default connect(null, { deleteList, updateList })(HomeList);
+const mapStateToProps = state => {
+    return {
+        currentWorkingList: state.currentWorkingList
+    }
+}
+
+export default connect(mapStateToProps, { deleteList, updateList, addCurrentWorkingList, addListItem })(HomeList);

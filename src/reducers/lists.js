@@ -7,7 +7,7 @@ export default function manageLists(state = [], action) {
             return []
         case 'UPDATE_LIST':
             return state.map(list => 
-                list.id === action.list.id ? action.list : list
+                list.id === action.list.id ? Object.assign(list, action.list) : list
             )
         case 'DELETE_LIST':
             idx = state.findIndex(list => list.id === action.listId);
