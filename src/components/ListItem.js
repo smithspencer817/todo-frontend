@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Pencil, CheckCircleFill } from 'react-bootstrap-icons';
+import { toggleListItemCompleted } from '../actions/lists';
+import { connect } from 'react-redux';
 
-export default function ListItem(props){
+function ListItem(props){
 
-    let date = new Date(props.listItem.createdAt)
+    let listItem = props.listItem
+
+    let date = new Date(listItem.createdAt)
     let [weekday, month, day, year, time] = date.toString().split(" ");
     time = time.slice(0,5);
     let [hour, minute] = time.split(":");
@@ -14,28 +18,36 @@ export default function ListItem(props){
 
     }
 
-    let [complete, toggleCompletion] = useState(false);
-
     return(
         <div className="individual-list-item-container">
             <div className="individual-list-item-info">
-                <h4>{props.listItem.description}</h4>
+                <h4>{listItem.description}</h4>
                 <p>{weekday} {month} {day}, {year} @ {hour}:{minute} {period}</p>
             </div>
             <div className="individual-list-item-actions">
                 <Pencil></Pencil>
                 {
-                    complete ? 
-                    <CheckCircleFill 
-                        className="complete-list-item" 
-                        onClick={() => toggleCompletion(false)}
-                    ></CheckCircleFill>
+                    listItem.completed ? 
+                    <div className="complete-list-item-outline">
+                        <CheckCircleFill 
+                            className="complete-list-item" 
+                            onClick={() => toggleListItemCompleted(props.currentWorkingList.id, listItem.id, false)}
+                        ></CheckCircleFill>
+                    </div>
                     :
                     <div className="incomplete-list-item" 
-                        onClick={() => toggleCompletion(true)}
+                        onClick={() => toggleListItemCompleted(props.currentWorkingList.id, listItem.id, true)}
                     ></div>
                 }
             </div>
         </div>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        currentWorkingList: state.currentWorkingList
+    }
+}
+
+export default connect(mapStateToProps, { toggleListItemCompleted })(ListItem);

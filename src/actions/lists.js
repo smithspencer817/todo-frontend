@@ -14,6 +14,15 @@ export const addListItem = item => {
     }
 }
 
+export const toggleListItemCompleted = (listId, itemId, completed) => {
+    return {
+        type: 'TOGGLE_LIST_ITEM_COMPLETED',
+        listId,
+        itemId,
+        completed
+    }
+}
+
 export const deleteList = listId => {
     fetch(`http://localhost:3000/api/lists/${listId}`, {
         method: 'DELETE',

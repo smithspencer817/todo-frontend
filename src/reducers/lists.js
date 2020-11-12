@@ -14,7 +14,7 @@ export default function manageLists(state = [], action) {
                 list,
                 ...state.slice(idx + 1)
             ]
-
+            
         case 'REMOVE_CURRENT_LISTS':
             return []
 
