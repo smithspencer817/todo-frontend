@@ -71,6 +71,7 @@
   display: flex;
   justify-content: space-evenly;
   width: 70%;
+  max-width: 500px;
 }
 
 #home-page-nav-bar button {
@@ -78,6 +79,7 @@
   border: none;
   border-radius: 20px;
   color: white;
+  font-size: 20px;
 }
 
 #home-page-nav-bar button:focus {
@@ -92,6 +94,7 @@
   text-align: center;
   width: 70%;
   height: 75%;
+  max-width: 500px;
   margin-top: 30px;
   overflow: auto;
 }
@@ -159,13 +162,18 @@
 
 /* ------------------- new list modal --------------------- */
 
+#new-list-modal {
+  max-width: 500px;
+  justify-self: center;
+}
+
 #new-list-form-button {
   background-color: rgb(255, 130, 28);
   border-radius: 20px;
   border: 1px solid rgb(255, 130, 28);
   color: white;
   margin-bottom: -10px;
-  width: 50%;
+  width: 40%;
   font-size: 20px;
 }
 
@@ -179,8 +187,6 @@
 }
 
 #log-out-modal {
-  margin-left: 90px;
-  margin-right: 90px;
   text-align: center;
 }
 
@@ -202,15 +208,20 @@
 /* --------------- individual list view page  --------------- */
 
 .individual-list-item-container {
-  border: 1px solid red;
+  background-color: rgb(223, 114, 25);
   display: flex;
   justify-content: space-between;
-  padding: 5px;
+  padding: 10px;
   margin-bottom: 20px;
+  border-radius: 10px;
+  color: rgb(145, 74, 16);
+}
+
+.individual-list-item-container h4 {
+  color: white;
 }
 
 .individual-list-item-info {
-  border: 1px solid green;
   text-align: left;
 }
 
@@ -219,16 +230,26 @@
 }
 
 .individual-list-item-actions {
-  border: 1px solid blue;
+  background-color: rgb(236, 121, 27);
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 40%;
+  justify-content: space-evenly;
+  width: 30%;
 }
 
-.individual-list-item-actions > div {
-  border: 1px solid purple;
-  border-radius: 20px;
+.complete-list-item {
+  color: rgb(37, 145, 37);
+  background-color: rgb(51, 194, 51);
   width: 35px;
   height: 35px;
+  border-radius: 20px;
+}
+
+.incomplete-list-item {
+  background-color: rgb(255, 141, 47);
+  border: 1px solid rgb(255, 141, 47);
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
 }
