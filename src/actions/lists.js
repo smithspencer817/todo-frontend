@@ -7,6 +7,13 @@ export const addList = list => {
     }
 }
 
+export const addListItem = item => {
+    return {
+        type: 'ADD_LIST_ITEM',
+        listItem: Object.assign({}, item)
+    }
+}
+
 export const deleteList = listId => {
     fetch(`http://localhost:3000/api/lists/${listId}`, {
         method: 'DELETE',
