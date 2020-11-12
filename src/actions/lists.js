@@ -59,6 +59,8 @@ export const fetchLists = id => {
     return (dispatch) => {
         fetch(`http://localhost:3000/api/users/${id}/lists`, {
             headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
                 'Authorization': `Bearer ${token}`
             }
         })

@@ -198,3 +198,37 @@
 .log-out-modal-button:hover {
   background-color: rgb(228, 116, 24);
 }
+
+/* --------------- individual list view page  --------------- */
+
+.individual-list-item-container {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.individual-list-item-info {
+  border: 1px solid green;
+  text-align: left;
+}
+
+.individual-list-item-info > p {
+  font-size: 10px;
+}
+
+.individual-list-item-actions {
+  border: 1px solid blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.individual-list-item-actions > div {
+  border: 1px solid purple;
+  border-radius: 20px;
+  width: 35px;
+  height: 35px;
+}

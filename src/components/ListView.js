@@ -10,14 +10,10 @@ function ListView(props) {
 
     let currentList = props.lists.find(list => list.id === props.currentWorkingList.id)
 
-    function handleGoBack() {
-        history.push('/home')
-    }
-
     return(
         <div id="home-page">
            <div id="home-page-nav-bar">
-                <button onClick={handleGoBack}>Back</button>
+                <button onClick={() => history.push('/home')}>Back</button>
                 <button>Search</button>
                 <ListItemForm />
             </div>
