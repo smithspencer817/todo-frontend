@@ -30,7 +30,8 @@ function ListForm(props) {
             if (list.length) {
                 setError(list[0].message)
             } else {
-                props.addList(list["list"])
+                list = Object.assign({}, list, {listItems: []})
+                props.addList(list)
                 setTimeout(() => {
                     setModalShow(false)
                     setError("")

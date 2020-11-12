@@ -20,7 +20,9 @@ export const deleteList = listId => {
         headers: {
             'Authorization': `Bearer ${token}`
         }
-    });
+    })
+    .then(res => res.json())
+    .catch(err => console.log(err));
 
     return {
         type: 'DELETE_LIST',
@@ -37,7 +39,9 @@ export const updateList = listData => {
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(listData)
-    });
+    })
+    .then(res => res.json())
+    .catch(err => console.log(err));
 
     return {
         type: 'UPDATE_LIST',
