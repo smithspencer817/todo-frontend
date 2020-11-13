@@ -1,13 +1,11 @@
 import React from 'react';
 import { Pencil, CheckCircleFill } from 'react-bootstrap-icons';
-import { toggleListItemCompleted } from '../actions/lists';
 import { connect } from 'react-redux';
+import { toggleListItemCompleted } from '../actions/lists';
 
 function ListItem(props){
 
-    let listItem = props.listItem
-
-    let date = new Date(listItem.createdAt)
+    let date = new Date(props.listItem.createdAt)
     let [weekday, month, day, year, time] = date.toString().split(" ");
     time = time.slice(0,5);
     let [hour, minute] = time.split(":");
@@ -21,22 +19,22 @@ function ListItem(props){
     return(
         <div className="individual-list-item-container">
             <div className="individual-list-item-info">
-                <h4>{listItem.description}</h4>
+                <h4>{props.listItem.description}</h4>
                 <p>{weekday} {month} {day}, {year} @ {hour}:{minute} {period}</p>
             </div>
             <div className="individual-list-item-actions">
                 <Pencil></Pencil>
                 {
-                    listItem.completed ? 
+                    props.listItem.completed ? 
                     <div className="complete-list-item-outline">
                         <CheckCircleFill 
                             className="complete-list-item" 
-                            onClick={() => toggleListItemCompleted(props.currentWorkingList.id, listItem.id, false)}
+                            onClick={() => props.toggleListItemCompleted(props.currentWorkingList.id, props.listItem.id, false)}
                         ></CheckCircleFill>
                     </div>
                     :
                     <div className="incomplete-list-item" 
-                        onClick={() => toggleListItemCompleted(props.currentWorkingList.id, listItem.id, true)}
+                        onClick={() => props.toggleListItemCompleted(props.currentWorkingList.id, props.listItem.id, true)}
                     ></div>
                 }
             </div>

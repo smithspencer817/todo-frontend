@@ -14,6 +14,22 @@ export default function manageLists(state = [], action) {
                 list,
                 ...state.slice(idx + 1)
             ]
+        
+        case 'TOGGLE_LIST_ITEM_COMPLETED':
+            return state.map(list => {
+                if (list.id === action.listId) {
+                    const updatedListItems = list.listItems.map(listItem => {
+                        if (listItem.id === action.itemId ) {
+                            return Object.assign({}, listItem, {completed: action.completed})
+                        } else {
+                            return listItem
+                        }
+                    })
+                    return Object.assign({}, list, {listItems: updatedListItems})
+                } else {
+                    return list
+                }
+            });
             
         case 'REMOVE_CURRENT_LISTS':
             return []

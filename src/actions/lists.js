@@ -15,6 +15,19 @@ export const addListItem = item => {
 }
 
 export const toggleListItemCompleted = (listId, itemId, completed) => {
+    let data = { completed }
+    fetch(`http://localhost:3000/api/list-items/${itemId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .catch(err => console.log(err));
+
     return {
         type: 'TOGGLE_LIST_ITEM_COMPLETED',
         listId,
