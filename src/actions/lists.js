@@ -14,6 +14,28 @@ export const addListItem = item => {
     }
 }
 
+export const updateListItem = (listId, itemId, description) => {
+    let data = { description }
+    fetch(`http://localhost:3000/api/list-items/${itemId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .catch(err => console.log(err));
+
+    return {
+        type: 'UPDATE_LIST_ITEM',
+        listId,
+        itemId,
+        description
+    }
+}
+
 export const toggleListItemCompleted = (listId, itemId, completed) => {
     let data = { completed }
     fetch(`http://localhost:3000/api/list-items/${itemId}`, {
@@ -40,6 +62,8 @@ export const deleteList = listId => {
     fetch(`http://localhost:3000/api/lists/${listId}`, {
         method: 'DELETE',
         headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
             'Authorization': `Bearer ${token}`
         }
     })
@@ -49,6 +73,25 @@ export const deleteList = listId => {
     return {
         type: 'DELETE_LIST',
         listId
+    }
+}
+
+export const deleteListItem = (listId, itemId) => {
+    fetch(`http://localhost:3000/api/list-items/${itemId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(res => res.json())
+    .catch(err => console.log(err));
+
+    return {
+        type: 'DELETE_LIST_ITEM',
+        listId,
+        itemId
     }
 }
 

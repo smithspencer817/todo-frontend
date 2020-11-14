@@ -95,7 +95,7 @@
   text-align: center;
   width: 70%;
   height: 75%;
-  max-width: 500px;
+  max-width: 400px;
   margin-top: 30px;
   overflow: auto;
 }
@@ -218,9 +218,10 @@
   color: rgb(99, 51, 12);
 }
 
-.individual-list-item-container h4 {
+.individual-list-item-container h6 {
   color: rgb(255, 255, 255);
   margin-bottom: 2px;
+  font-size: 14px;
 }
 
 .individual-list-item-info {
@@ -228,7 +229,7 @@
 }
 
 .individual-list-item-info > p {
-  font-size: 10px;
+  font-size: 8px;
 }
 
 .individual-list-item-actions {
@@ -240,11 +241,24 @@
   width: 30%;
 }
 
+.individual-list-item-action-icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 14px;
+  height: 75%;
+}
+
+.individual-list-item-action-icons svg:hover {
+  color: white;
+  transition: color 0.5s;
+}
+
 .complete-list-item {
   color: rgb(0, 175, 0);
   background-color: rgb(255, 255, 255);
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 20px;
   border: 2px solid rgb(0, 175, 0);
   padding: 2px;
@@ -253,7 +267,26 @@
 .incomplete-list-item {
   background-color: rgb(255, 141, 47);
   border: 1px solid rgb(255, 141, 47);
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 20px;
+}
+
+#list-item-edit-form-button {
+  background-color: rgb(255, 130, 28);
+  border-radius: 20px;
+  border: 1px solid rgb(255, 130, 28);
+  color: white;
+  margin-bottom: -10px;
+  width: 40%;
+  font-size: 20px;
+}
+
+#list-item-edit-form-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#list-item-edit-form-button-container {
+  text-align: center;
 }

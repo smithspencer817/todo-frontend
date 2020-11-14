@@ -1,19 +1,45 @@
 export default function manageLists(state = [], action) {
-    let idx;
+    let listIdx;
     switch (action.type) {
 
         case 'ADD_LIST':
             return [action.list, ...state]
 
         case 'ADD_LIST_ITEM':
-            idx = state.findIndex(list => list.id === action.listItem.listId);
+            listIdx = state.findIndex(list => list.id === action.listItem.listId);
             let list = state.find(list => list.id === action.listItem.listId);
-            list.listItems = [action.listItem, ...list.listItems]
+            list.listItems = [...list.listItems, action.listItem]
             return [
-                ...state.slice(0, idx),
+                ...state.slice(0, listIdx),
                 list,
-                ...state.slice(idx + 1)
+                ...state.slice(listIdx + 1)
             ]
+
+        case 'UPDATE_LIST_ITEM':
+            return state.map(list => {
+                if (list.id === action.listId) {
+                    const updatedListItems = list.listItems.map(item => {
+                        if (item.id === action.itemId) {
+                            return Object.assign({}, item, {description: action.description})
+                        } else {
+                            return item
+                        }
+                    })
+                    return Object.assign({}, list, {listItems: updatedListItems})
+                } else {
+                    return list
+                }
+            })
+        
+        case 'DELETE_LIST_ITEM':
+            return state.map(list => {
+                if (list.id === action.listId) {
+                    const updatedListItems = list.listItems.filter(item => item.id !== action.itemId)
+                    return Object.assign({}, list, {listItems: updatedListItems})
+                } else {
+                    return list
+                }
+            })
         
         case 'TOGGLE_LIST_ITEM_COMPLETED':
             return state.map(list => {
@@ -30,9 +56,6 @@ export default function manageLists(state = [], action) {
                     return list
                 }
             });
-            
-        case 'REMOVE_CURRENT_LISTS':
-            return []
 
         case 'UPDATE_LIST':
             return state.map(list => 
@@ -40,11 +63,14 @@ export default function manageLists(state = [], action) {
             )
 
         case 'DELETE_LIST':
-            idx = state.findIndex(list => list.id === action.listId);
+            listIdx = state.findIndex(list => list.id === action.listId);
             return [
-                ...state.slice(0, idx),
-                ...state.slice(idx + 1)
+                ...state.slice(0, listIdx),
+                ...state.slice(listIdx + 1)
             ]
+        
+        case 'REMOVE_CURRENT_LISTS':
+            return []
 
         default:
             return state;

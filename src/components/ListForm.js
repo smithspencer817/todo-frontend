@@ -66,7 +66,7 @@ function ListForm(props) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={(e) => handleSubmit(e) }>
+                <Form onSubmit={(e) => handleSubmit(e)}>
                     <Form.Group>
                         <Form.Label>Enter a name:</Form.Label>
                         <Form.Control placeholder="List Name..." onChange={(e) => setName(e.target.value)}/>
