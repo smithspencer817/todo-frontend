@@ -1,8 +1,8 @@
 import React from 'react';
-import LoginPage from './components/LoginPage';
-import SignUpPage from './components/SignUpPage';
-import HomePage from './components/HomePage';
-import ListView from './components/ListView';
+import LoginPage from './components/LoginPages/LoginPage';
+import SignUpPage from './components/LoginPages/SignUpPage';
+import HomePage from './components//HomePage/HomePage';
+import ListView from './components/ListView/ListView';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import ListItemForm from '../components/ListItemForm';
-import ListItemsContainer from '../containers/ListItemsContainer';
+import ListItemForm from './ListItemForm';
+import ListItemsContainer from '../../containers/ListItemsContainer';
 import { connect } from 'react-redux';
 
 function ListView(props) {

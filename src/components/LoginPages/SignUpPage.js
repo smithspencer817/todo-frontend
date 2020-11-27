@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { createNewUser } from '../actions/user';
+import { createNewUser } from '../../actions/user';
 
 
 function SignUpPage(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
-import ListsContainer from '../containers/ListsContainer';
-import ListForm from '../components/ListForm';
-import LogOut from '../components/LogOut';
+import ListsContainer from './ListsContainer';
+import ListForm from './ListForm';
+import LogOut from './LogOut';
 import { connect } from 'react-redux';
 
 function HomePage(props) {

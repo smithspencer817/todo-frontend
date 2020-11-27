@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeList from '../components/HomeList';
+import HomeList from './HomeList';
 
 export default function ListsContainer(props) {
     return (

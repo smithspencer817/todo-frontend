@@ -1,36 +1,37 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { addListItem } from '../actions/lists';
+import { addList } from '../../actions/lists';
 
-function ListItemForm(props) {
+function ListForm(props) {
 
-    const [description, setDescription] = useState("");
+    const [name, setName] = useState("");
     const [modalShow, setModalShow] = useState(false);
     const [error, setError] = useState("");
 
     function handleSubmit(event) {
         event.preventDefault();
         const token = document.cookie.slice(10);
-        const newListItem = {
-            description: description,
-            listId: props.currentWorkingList.id
+        const newList = {
+            name: name,
+            userId: props.user.id
         }
-        fetch('http://localhost:3000/api/list-items', {
+        fetch('http://localhost:3000/api/lists', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify(newListItem)
+            body: JSON.stringify(newList)
         })
         .then(res => res.json())
-        .then(listItem => {
-            if (listItem.length) {
-                setError(listItem[0].message)
+        .then(list => {
+            if (list.length) {
+                setError(list[0].message)
             } else {
-                props.addListItem(listItem)
+                list = Object.assign({}, list, {listItems: []})
+                props.addList(list)
                 setTimeout(() => {
                     setModalShow(false)
                     setError("")
@@ -48,7 +49,7 @@ function ListItemForm(props) {
                 size="lg"
                 block
             >
-                Add Item
+                New List
             </Button>
             <Modal
             id="new-list-modal"
@@ -61,16 +62,16 @@ function ListItemForm(props) {
             >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                Give your item a description
+                Name your list
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={(e) => handleSubmit(e) }>
+                <Form onSubmit={(e) => handleSubmit(e)}>
                     <Form.Group>
-                        <Form.Label>Enter a description:</Form.Label>
-                        <Form.Control placeholder="Description..." onChange={(e) => setDescription(e.target.value)}/>
+                        <Form.Label>Enter a name:</Form.Label>
+                        <Form.Control placeholder="List Name..." onChange={(e) => setName(e.target.value)}/>
                         <Form.Text className="text-muted">
-                        Description must be between 1 and 26 characters
+                        List name must be between 1 and 26 characters
                         </Form.Text>
                     </Form.Group>
                     <Form.Group id="new-list-form-button-container">
@@ -80,7 +81,7 @@ function ListItemForm(props) {
                             default: return <Alert variant="danger">{error}</Alert>;
                         }
                     })()}
-                    <Button type="submit" id="new-list-form-button">Add Item</Button>
+                    <Button type="submit" id="new-list-form-button">Add New List</Button>
                     </Form.Group>
                 </Form>
             </Modal.Body>
@@ -91,8 +92,8 @@ function ListItemForm(props) {
 
 const mapStateToProps = state => {
     return {
-        currentWorkingList: state.currentWorkingList
+        user: state.user
     }
 }
 
-export default connect(mapStateToProps, { addListItem })(ListItemForm);
+export default connect(mapStateToProps, { addList })(ListForm);

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Pencil, CheckCircleFill, Trash } from 'react-bootstrap-icons';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { toggleListItemCompleted, deleteListItem, updateListItem } from '../actions/lists';
+import { toggleListItemCompleted, deleteListItem, updateListItem } from '../../actions/lists';
 
 function ListItem(props){
 

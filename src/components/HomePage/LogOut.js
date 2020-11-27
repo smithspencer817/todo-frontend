@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { removeCurrentUser } from '../actions/user'
-import { removeCurrentLists } from '../actions/lists'
+import { removeCurrentUser } from '../../actions/user'
+import { removeCurrentLists } from '../../actions/lists'
 
 function LogOut(props) {
 

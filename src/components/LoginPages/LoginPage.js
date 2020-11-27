@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchUser } from '../actions/user';
+import { fetchUser } from '../../actions/user';
 
 function LoginPage(props) {
 
