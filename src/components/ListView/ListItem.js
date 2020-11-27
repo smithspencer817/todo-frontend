@@ -11,7 +11,7 @@ function ListItem(props){
 
     const currentWorkingList = props.currentWorkingList
     const listItem = props.listItem
-    const createdAt = convertDate(listItem.createdAt)
+    const { year, month, weekday, day, hour, minute, period } = convertDate(listItem.createdAt)
 
     function convertDate(datetime) {
         let date = new Date(datetime)
@@ -61,7 +61,7 @@ function ListItem(props){
             <div className="individual-list-item-container">
                 <div className="individual-list-item-info">
                     <h6>{listItem.description}</h6>
-                    <p>{createdAt.weekday} {createdAt.month} {createdAt.day}, {createdAt.year} @ {createdAt.hour}:{createdAt.minute} {createdAt.period}</p>
+                    <p>{weekday} {month} {day}, {year} @ {hour}:{minute} {period}</p>
                 </div>
                 <div className="individual-list-item-actions">
                     <div className="individual-list-item-action-icons">
