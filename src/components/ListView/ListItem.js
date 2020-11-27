@@ -11,6 +11,7 @@ function ListItem(props){
 
     const currentWorkingList = props.currentWorkingList
     const listItem = props.listItem
+    const createdAt = convertDate(listItem.createdAt)
 
     function convertDate(datetime) {
         let date = new Date(datetime)
@@ -38,18 +39,24 @@ function ListItem(props){
         event.target.reset();
     }
 
-    const createdAt = convertDate(listItem.createdAt)
+    function handleDelete() {
+        const itemData = {
+            listId: currentWorkingList.id,
+            itemId: listItem.id
+        }
+        props.deleteListItem(itemData)
+    }
 
     return(
         <div>
             <div className="individual-list-item-container">
                 <div className="individual-list-item-info">
-                    <h6>{props.listItem.description}</h6>
+                    <h6>{listItem.description}</h6>
                     <p>{createdAt.weekday} {createdAt.month} {createdAt.day}, {createdAt.year} @ {createdAt.hour}:{createdAt.minute} {createdAt.period}</p>
                 </div>
                 <div className="individual-list-item-actions">
                     <div className="individual-list-item-action-icons">
-                        <Trash onClick={() => props.deleteListItem(currentWorkingList.id, listItem.id)}></Trash>
+                        <Trash onClick={handleDelete}></Trash>
                         <Pencil onClick={() => setModalShow(true)}></Pencil>
                     </div>
                     <div>
@@ -112,7 +119,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         toggleListItemCompleted: (listId, itemId, completed) => dispatch(toggleListItemCompleted(listId, itemId, completed)),
-        deleteListItem: (listId, itemId) => dispatch(deleteListItem(listId, itemId)),
+        deleteListItem: itemData => dispatch(deleteListItem(itemData)),
         updateListItem: itemData => dispatch(updateListItem(itemData))
     }
 }

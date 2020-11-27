@@ -176,8 +176,8 @@ export const deleteList = listId => {
 
 // DELETE ListItems
 
-export const deleteListItem = (listId, itemId) => {
-    fetch(`http://localhost:3000/api/list-items/${itemId}`, {
+export const deleteListItem = itemData => {
+    fetch(`http://localhost:3000/api/list-items/${itemData.itemId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -190,7 +190,6 @@ export const deleteListItem = (listId, itemId) => {
 
     return {
         type: 'DELETE_LIST_ITEM',
-        listId,
-        itemId
+        itemData: Object.assign({}, itemData)
     }
 }

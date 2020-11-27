@@ -33,8 +33,8 @@ export default function manageLists(state = [], action) {
         
         case 'DELETE_LIST_ITEM':
             return state.map(list => {
-                if (list.id === action.listId) {
-                    const updatedListItems = list.listItems.filter(item => item.id !== action.itemId)
+                if (list.id === action.itemData.listId) {
+                    const updatedListItems = list.listItems.filter(item => item.id !== action.itemData.itemId)
                     return Object.assign({}, list, {listItems: updatedListItems})
                 } else {
                     return list
