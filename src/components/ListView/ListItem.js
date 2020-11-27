@@ -47,6 +47,15 @@ function ListItem(props){
         props.deleteListItem(itemData)
     }
 
+    function handleToggle(status) {
+        const toggleData = {
+            listId: currentWorkingList.id,
+            itemId: listItem.id,
+            completed: status
+        }
+        props.toggleListItemCompleted(toggleData)
+    }
+
     return(
         <div>
             <div className="individual-list-item-container">
@@ -65,12 +74,12 @@ function ListItem(props){
                             <div className="complete-list-item-outline">
                                 <CheckCircleFill 
                                     className="complete-list-item" 
-                                    onClick={() => props.toggleListItemCompleted(currentWorkingList.id, listItem.id, false)}
+                                    onClick={() => handleToggle(false)}
                                 ></CheckCircleFill>
                             </div>
                             :
                             <div className="incomplete-list-item" 
-                                onClick={() => props.toggleListItemCompleted(currentWorkingList.id, listItem.id, true)}
+                                onClick={() => handleToggle(true)}
                             ></div>
                         }
                     </div>
@@ -118,7 +127,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleListItemCompleted: (listId, itemId, completed) => dispatch(toggleListItemCompleted(listId, itemId, completed)),
+        toggleListItemCompleted: toggleData => dispatch(toggleListItemCompleted(toggleData)),
         deleteListItem: itemData => dispatch(deleteListItem(itemData)),
         updateListItem: itemData => dispatch(updateListItem(itemData))
     }

@@ -132,8 +132,10 @@ export const updateListItem = itemData => {
     }
 }
 
-export const toggleListItemCompleted = (listId, itemId, completed) => {
-    let data = { completed }
+export const toggleListItemCompleted = toggleData => {
+
+    const { itemId, completed } = toggleData;
+
     fetch(`http://localhost:3000/api/list-items/${itemId}`, {
         method: 'PUT',
         headers: {
@@ -141,16 +143,14 @@ export const toggleListItemCompleted = (listId, itemId, completed) => {
             'Accept': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(completed)
     })
     .then(res => res.json())
     .catch(err => console.log(err));
 
     return {
         type: 'TOGGLE_LIST_ITEM_COMPLETED',
-        listId,
-        itemId,
-        completed
+        toggleData: Object.assign({}, toggleData)
     }
 }
 

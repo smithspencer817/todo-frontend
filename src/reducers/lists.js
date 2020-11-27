@@ -43,10 +43,10 @@ export default function manageLists(state = [], action) {
         
         case 'TOGGLE_LIST_ITEM_COMPLETED':
             return state.map(list => {
-                if (list.id === action.listId) {
+                if (list.id === action.toggleData.listId) {
                     const updatedListItems = list.listItems.map(listItem => {
-                        if (listItem.id === action.itemId ) {
-                            return Object.assign({}, listItem, {completed: action.completed})
+                        if (listItem.id === action.toggleData.itemId ) {
+                            return Object.assign({}, listItem, {completed: action.toggleData.completed})
                         } else {
                             return listItem
                         }
