@@ -17,10 +17,10 @@ export default function manageLists(state = [], action) {
 
         case 'UPDATE_LIST_ITEM':
             return state.map(list => {
-                if (list.id === action.listId) {
+                if (list.id === action.listItem.listId) {
                     const updatedListItems = list.listItems.map(item => {
-                        if (item.id === action.itemId) {
-                            return Object.assign({}, item, {description: action.description})
+                        if (item.id === action.listItem.itemId) {
+                            return Object.assign({}, item, {description: action.listItem.description})
                         } else {
                             return item
                         }

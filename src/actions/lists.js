@@ -110,8 +110,10 @@ export const updateList = listData => {
 
 // UPDATE ListItems
 
-export const updateListItem = (listId, itemId, description) => {
-    let data = { description }
+export const updateListItem = itemData => {
+
+    const {itemId, description} = itemData
+
     fetch(`http://localhost:3000/api/list-items/${itemId}`, {
         method: 'PUT',
         headers: {
@@ -119,16 +121,14 @@ export const updateListItem = (listId, itemId, description) => {
             'Accept': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(description)
     })
     .then(res => res.json())
     .catch(err => console.log(err));
 
     return {
         type: 'UPDATE_LIST_ITEM',
-        listId,
-        itemId,
-        description
+        listItem: Object.assign({}, itemData)
     }
 }
 

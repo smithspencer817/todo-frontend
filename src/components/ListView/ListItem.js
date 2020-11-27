@@ -26,7 +26,12 @@ function ListItem(props){
 
     function handleSubmit(event) {
         event.preventDefault();
-        props.updateListItem(currentWorkingList.id, listItem.id, description)
+        const itemData = {
+            listId: currentWorkingList.id,
+            itemId: listItem.id,
+            description: description
+        }
+        props.updateListItem(itemData)
         setTimeout(() => {
             setModalShow(false)
         }, 500)
@@ -108,7 +113,7 @@ const mapDispatchToProps = dispatch => {
     return {
         toggleListItemCompleted: (listId, itemId, completed) => dispatch(toggleListItemCompleted(listId, itemId, completed)),
         deleteListItem: (listId, itemId) => dispatch(deleteListItem(listId, itemId)),
-        updateListItem: (listId, itemId, description) => dispatch(updateListItem(listId, itemId, description))
+        updateListItem: itemData => dispatch(updateListItem(itemData))
     }
 }
 
