@@ -9,6 +9,9 @@ function ListItem(props){
     const [description, setDescription] = useState("");
     const [modalShow, setModalShow] = useState(false);
 
+    const currentWorkingList = props.currentWorkingList
+    const listItem = props.listItem
+
     function convertDate(datetime) {
         let date = new Date(datetime)
         let [weekday, month, day, year, time] = date.toString().split(" ");
@@ -23,14 +26,14 @@ function ListItem(props){
 
     function handleSubmit(event) {
         event.preventDefault();
-        props.updateListItem(props.currentWorkingList.id, props.listItem.id, description)
+        props.updateListItem(currentWorkingList.id, listItem.id, description)
         setTimeout(() => {
             setModalShow(false)
         }, 500)
         event.target.reset();
     }
 
-    const createdAt = convertDate(props.listItem.createdAt)
+    const createdAt = convertDate(listItem.createdAt)
 
     return(
         <div>
@@ -41,21 +44,21 @@ function ListItem(props){
                 </div>
                 <div className="individual-list-item-actions">
                     <div className="individual-list-item-action-icons">
-                        <Trash onClick={() => props.deleteListItem(props.currentWorkingList.id, props.listItem.id)}></Trash>
+                        <Trash onClick={() => props.deleteListItem(currentWorkingList.id, listItem.id)}></Trash>
                         <Pencil onClick={() => setModalShow(true)}></Pencil>
                     </div>
                     <div>
                         {
-                            props.listItem.completed ? 
+                            listItem.completed ? 
                             <div className="complete-list-item-outline">
                                 <CheckCircleFill 
                                     className="complete-list-item" 
-                                    onClick={() => props.toggleListItemCompleted(props.currentWorkingList.id, props.listItem.id, false)}
+                                    onClick={() => props.toggleListItemCompleted(currentWorkingList.id, listItem.id, false)}
                                 ></CheckCircleFill>
                             </div>
                             :
                             <div className="incomplete-list-item" 
-                                onClick={() => props.toggleListItemCompleted(props.currentWorkingList.id, props.listItem.id, true)}
+                                onClick={() => props.toggleListItemCompleted(currentWorkingList.id, listItem.id, true)}
                             ></div>
                         }
                     </div>
@@ -72,14 +75,14 @@ function ListItem(props){
                 >
                 <Modal.Header closeButton>
                     <Modal.Title>
-                    {props.listItem.description}
+                    {listItem.description}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={(e) => handleSubmit(e)}>
                         <Form.Group>
                             <Form.Label>Edit description:</Form.Label>
-                            <Form.Control placeholder={`${props.listItem.description}`} onChange={(e) => setDescription(e.target.value)}/>
+                            <Form.Control placeholder={`${listItem.description}`} onChange={(e) => setDescription(e.target.value)}/>
                             <Form.Text className="text-muted">
                             Description must be between 1 and 26 characters
                             </Form.Text>
