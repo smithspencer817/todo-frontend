@@ -1,42 +1,21 @@
 import React, { useState } from 'react';
-import { Modal, Button, Form, Alert } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { addListItem } from '../../actions/lists';
+import { createListItem } from '../../actions/lists';
 
 function ListItemForm(props) {
 
     const [description, setDescription] = useState("");
     const [modalShow, setModalShow] = useState(false);
-    const [error, setError] = useState("");
 
     function handleSubmit(event) {
         event.preventDefault();
-        const token = document.cookie.slice(10);
         const newListItem = {
             description: description,
             listId: props.currentWorkingList.id
         }
-        fetch('http://localhost:3000/api/list-items', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(newListItem)
-        })
-        .then(res => res.json())
-        .then(listItem => {
-            if (listItem.length) {
-                setError(listItem[0].message)
-            } else {
-                props.addListItem(listItem)
-                setTimeout(() => {
-                    setModalShow(false)
-                    setError("")
-                }, 500)
-            }
-        })
+        props.createListItem(newListItem)
+        setModalShow(false)
         event.target.reset();
     }
 
@@ -74,12 +53,6 @@ function ListItemForm(props) {
                         </Form.Text>
                     </Form.Group>
                     <Form.Group id="new-list-form-button-container">
-                    {(() => {
-                        switch (error) {
-                            case "": return null;
-                            default: return <Alert variant="danger">{error}</Alert>;
-                        }
-                    })()}
                     <Button type="submit" id="new-list-form-button">Add Item</Button>
                     </Form.Group>
                 </Form>
@@ -95,4 +68,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { addListItem })(ListItemForm);
+export default connect(mapStateToProps, { createListItem })(ListItemForm);

@@ -65,6 +65,28 @@ export const createList = listData => {
 
 // CREATE ListItems
 
+export const createListItem = listItem => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/api/list-items', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(listItem)
+        })
+        .then(res => res.json())
+        .then(item => {
+            if (item.length) {
+                console.log("error")
+            } else {
+                dispatch(addListItem(item))
+            }
+        })
+    }
+}
+
 // UPDATE Lists
 
 export const updateList = listData => {
