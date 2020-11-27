@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { deleteList, updateList } from '../../actions/lists';
 import { addCurrentWorkingList } from '../../actions/currentWorkingList';
-import { addListItem } from '../../actions/lists';
 import { connect } from 'react-redux';
 import { Trash, Pencil } from 'react-bootstrap-icons';
 
@@ -62,4 +61,12 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { deleteList, updateList, addCurrentWorkingList, addListItem })(HomeList);
+const mapDispatchToProps = dispatch => {
+    return {
+        deleteList: listId => dispatch(deleteList(listId)),
+        updateList: listData => dispatch(updateList(listData)),
+        addCurrentWorkingList: list => dispatch(addCurrentWorkingList(list))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeList);
