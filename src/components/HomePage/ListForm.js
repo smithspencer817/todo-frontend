@@ -68,4 +68,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { createList })(ListForm);
+const mapDispatchToProps = dispatch => {
+    return {
+        createList: listData => dispatch(createList(listData))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListForm);

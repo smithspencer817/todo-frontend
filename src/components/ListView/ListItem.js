@@ -31,7 +31,6 @@ function ListItem(props){
     }
 
     const createdAt = convertDate(props.listItem.createdAt)
-    // const updatedAt = convertDate(props.listItem.updatedAt)
 
     return(
         <div>
@@ -102,4 +101,12 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { toggleListItemCompleted, deleteListItem, updateListItem })(ListItem);
+const mapDispatchToProps = dispatch => {
+    return {
+        toggleListItemCompleted: (listId, itemId, completed) => dispatch(toggleListItemCompleted(listId, itemId, completed)),
+        deleteListItem: (listId, itemId) => dispatch(deleteListItem(listId, itemId)),
+        updateListItem: (listId, itemId, description) => dispatch(updateListItem(listId, itemId, description))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListItem);

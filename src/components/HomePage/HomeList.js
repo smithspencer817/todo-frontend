@@ -10,6 +10,7 @@ function HomeList(props) {
     const { name, id } = props.list
 
     const [editing, setEditing] = useState(false)
+    
     let history = useHistory();
 
     function handleEdit(e) {
