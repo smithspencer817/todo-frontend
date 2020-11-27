@@ -27,9 +27,7 @@ function HomeList(props) {
     }
 
     function viewListItems() {
-        // set props.list to be the current working list
         props.addCurrentWorkingList(props.list)
-        // get all list items from that list and populate the container
         history.push('/list-view')
     }
 

@@ -1,43 +1,21 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { addList } from '../../actions/lists';
+import { createList } from '../../actions/lists';
 
 function ListForm(props) {
 
     const [name, setName] = useState("");
     const [modalShow, setModalShow] = useState(false);
-    const [error, setError] = useState("");
 
     function handleSubmit(event) {
         event.preventDefault();
-        const token = document.cookie.slice(10);
         const newList = {
             name: name,
             userId: props.user.id
         }
-        fetch('http://localhost:3000/api/lists', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(newList)
-        })
-        .then(res => res.json())
-        .then(list => {
-            if (list.length) {
-                setError(list[0].message)
-            } else {
-                list = Object.assign({}, list, {listItems: []})
-                props.addList(list)
-                setTimeout(() => {
-                    setModalShow(false)
-                    setError("")
-                }, 500)
-            }
-        })
+        props.createList(newList)
+        setModalShow(false);
         event.target.reset();
     }
 
@@ -75,12 +53,6 @@ function ListForm(props) {
                         </Form.Text>
                     </Form.Group>
                     <Form.Group id="new-list-form-button-container">
-                    {(() => {
-                        switch (error) {
-                            case "": return null;
-                            default: return <Alert variant="danger">{error}</Alert>;
-                        }
-                    })()}
                     <Button type="submit" id="new-list-form-button">Add New List</Button>
                     </Form.Group>
                 </Form>
@@ -96,4 +68,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { addList })(ListForm);
+export default connect(mapStateToProps, { createList })(ListForm);
