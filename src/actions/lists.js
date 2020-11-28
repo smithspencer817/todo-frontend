@@ -143,7 +143,7 @@ export const toggleListItemCompleted = toggleData => {
             'Accept': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(completed)
+        body: JSON.stringify({completed})
     })
     .then(res => res.json())
     .catch(err => console.log(err));

@@ -14,11 +14,11 @@ function ListItem(props){
     const { year, month, weekday, day, hour, minute, period } = convertDate(listItem.createdAt);
 
     function convertDate(datetime) {
-        const date = new Date(datetime)
-        const [weekday, month, day, year, time] = date.toString().split(" ");
+        let date = new Date(datetime)
+        let [weekday, month, day, year, time] = date.toString().split(" ");
         time = time.slice(0,5);
-        const [hour, minute] = time.split(":");
-        const period = hour >= 12 ? "PM" : "AM"
+        let [hour, minute] = time.split(":");
+        let period = hour >= 12 ? "PM" : "AM"
         if (parseInt(hour) > 12) {
             hour = (parseInt(hour) - 12).toString()
         }

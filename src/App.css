@@ -290,3 +290,56 @@
 #list-item-edit-form-button-container {
   text-align: center;
 }
+
+.react-calendar {
+  border-radius: 20px;
+  background-color: rgb(235, 235, 235);
+  margin: auto;
+  width: 70%;
+  font-size: 15px;
+  padding: 10px;
+  border: 2px solid rgb(212, 212, 212);
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.react-calendar__tile {
+  padding: 5px;
+  color: black;
+}
+
+.react-calendar__tile--active {
+  background:  rgb(255, 130, 28);
+  border-radius: 20px;
+}
+
+.react-calendar__tile:enabled:hover, .react-calendar__tile:enabled:focus {
+  background:  rgb(255, 130, 28);
+  border: none;
+  outline: none;
+  border-radius: 20px;
+}
+
+.react-calendar__tile--now {
+  background: rgb(209, 209, 209);
+  border-radius: 20px;
+}
+
+#due-date-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+#show-calendar-button {
+  border-radius: 10px;
+  border: 2px solid rgb(206, 206, 206);
+  font-size: 15px;
+  background: rgb(224, 224, 224);
+}
+
+#show-calendar-button:focus {
+  outline: none;
+  box-shadow: none;
+}
