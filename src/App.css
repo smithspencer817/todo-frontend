@@ -335,11 +335,24 @@
 #show-calendar-button {
   border-radius: 10px;
   border: 2px solid rgb(206, 206, 206);
-  font-size: 15px;
+  font-size: 13px;
+  color: rgb(77, 77, 77);
   background: rgb(224, 224, 224);
 }
 
 #show-calendar-button:focus {
   outline: none;
   box-shadow: none;
+}
+
+.list-item-empty-alert {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  align-items: center;
+  background: rgb(255, 130, 28);
+  height: 70%;
+  border-radius: 10px;
+  color: rgb(255, 198, 152);
 }
