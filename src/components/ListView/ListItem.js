@@ -9,16 +9,16 @@ function ListItem(props){
     const [description, setDescription] = useState("");
     const [modalShow, setModalShow] = useState(false);
 
-    const currentWorkingList = props.currentWorkingList
-    const listItem = props.listItem
-    const { year, month, weekday, day, hour, minute, period } = convertDate(listItem.createdAt)
+    const currentWorkingList = props.currentWorkingList;
+    const listItem = props.listItem;
+    const { year, month, weekday, day, hour, minute, period } = convertDate(listItem.createdAt);
 
     function convertDate(datetime) {
-        let date = new Date(datetime)
-        let [weekday, month, day, year, time] = date.toString().split(" ");
+        const date = new Date(datetime)
+        const [weekday, month, day, year, time] = date.toString().split(" ");
         time = time.slice(0,5);
-        let [hour, minute] = time.split(":");
-        let period = hour >= 12 ? "PM" : "AM"
+        const [hour, minute] = time.split(":");
+        const period = hour >= 12 ? "PM" : "AM"
         if (parseInt(hour) > 12) {
             hour = (parseInt(hour) - 12).toString()
         }
@@ -75,7 +75,7 @@ function ListItem(props){
                                 <CheckCircleFill 
                                     className="complete-list-item" 
                                     onClick={() => handleToggle(false)}
-                                ></CheckCircleFill>
+                                />
                             </div>
                             :
                             <div className="incomplete-list-item" 
@@ -103,7 +103,10 @@ function ListItem(props){
                     <Form onSubmit={(e) => handleSubmit(e)}>
                         <Form.Group>
                             <Form.Label>Edit description:</Form.Label>
-                            <Form.Control placeholder={`${listItem.description}`} onChange={(e) => setDescription(e.target.value)}/>
+                            <Form.Control
+                                placeholder={`${listItem.description}`} 
+                                onChange={(e) => setDescription(e.target.value)}
+                            />
                             <Form.Text className="text-muted">
                             Description must be between 1 and 26 characters
                             </Form.Text>
