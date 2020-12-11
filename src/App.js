@@ -8,6 +8,7 @@ import './App.css';
 import {
   Switch,
   Route,
+  Redirect,
   withRouter
 } from "react-router-dom";
 
@@ -16,6 +17,9 @@ function App() {
   return (
     <div>
       <Switch>
+        <Route exact path="/">
+          <Redirect to="/login"/>
+        </Route>
         <Route path="/login">
           <LoginPage />
         </Route>
